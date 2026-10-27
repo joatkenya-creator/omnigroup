@@ -20,19 +20,19 @@ export function SiteFooter() {
             </p>
             <ul className="mt-8 space-y-3 text-[0.9375rem]">
               <li>
-                <a href={`tel:${contact.phoneE164}`} data-track-location="footer" className="flex items-center gap-3 hover:text-brass">
-                  <Phone className="size-4 text-brass" aria-hidden="true" />
+                <a href={`tel:${contact.phoneE164}`} data-track-location="footer" className="flex items-center gap-3 hover:text-highlight">
+                  <Phone className="size-4 text-highlight" aria-hidden="true" />
                   {contact.phoneDisplay}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${contact.email}`} data-track-location="footer" className="flex items-center gap-3 hover:text-brass">
-                  <Mail className="size-4 text-brass" aria-hidden="true" />
+                <a href={`mailto:${contact.email}`} data-track-location="footer" className="flex items-center gap-3 hover:text-highlight">
+                  <Mail className="size-4 text-highlight" aria-hidden="true" />
                   {contact.email}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-on-navy-muted">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-brass" aria-hidden="true" />
+                <MapPin className="mt-0.5 size-4 shrink-0 text-highlight" aria-hidden="true" />
                 <address className="not-italic">
                   {contact.address.street}, {contact.address.city}, {contact.address.region} {contact.address.postalCode}
                 </address>
@@ -43,7 +43,7 @@ export function SiteFooter() {
           <div className="grid gap-10 sm:grid-cols-3">
             {footerNav.map((group) => (
               <nav key={group.heading} aria-label={`Footer ${group.heading.toLowerCase()}`}>
-                <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.08em] text-brass">{group.heading}</h2>
+                <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.08em] text-highlight">{group.heading}</h2>
                 <ul className="mt-3 space-y-1 text-[0.9375rem]">
                   {group.links.map((link) => (
                     <li key={link.href + link.label}>

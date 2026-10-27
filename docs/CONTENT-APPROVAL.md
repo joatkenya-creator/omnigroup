@@ -19,8 +19,9 @@ Edit the copy in `src/content/` (see README) and the legal pages in `src/app/pri
 
 ## Brand
 
-- [ ] Approved logo supplied. Replace `src/components/Brand.tsx`, `src/app/icon.svg` and `src/app/opengraph-image.tsx`. **The old logo was intentionally not reused.**
-- [ ] Brand colours and typography. The current palette is an interim choice and lives in `src/app/globals.css`.
+- [x] Logo: the existing website's logo is used, as instructed on 27 Oct 2026.
+- [x] Brand colours: the existing website's colours are used (`src/app/globals.css`).
+- [ ] Typography. The site keeps its own fonts (Newsreader headings, Geist body); the old site used Montserrat. Confirm or request a switch.
 - [ ] Photography. None is used. If photos are added, use approved company photos or licensed stock. Do not present stock images as real staff, clients or offices.
 
 ## Company facts (`src/content/site.ts`)
@@ -101,21 +102,10 @@ Edit the copy in `src/content/` (see README) and the legal pages in `src/app/pri
 - [ ] Who receives applications? Set `CAREERS_TO_EMAIL`.
 - [ ] Candidate data retention period.
 
-## Legal (requires legal review)
+## Legal
 
-- [ ] **Privacy Policy.** Rewritten to match how this site actually handles data:
-  - the forms it has
-  - email delivery
-  - Cloudflare hosting and Turnstile
-  - optional cookieless analytics
-
-  Still to confirm:
-  - retention periods
-  - state-specific privacy rights
-  - the legal entity
-  - the date
-- [ ] **EEO Statement.** Based on the old statement, with the inconsistent harassment list fixed.
-  - Should a named EEO contact be added?
+- [x] **Privacy Policy** and **EEO Statement** are the existing website's text, unchanged, as instructed on 27 Oct 2026.
+- [ ] Optional: ask legal counsel whether the privacy policy should mention the new site's spam-protection check (Cloudflare Turnstile) and any analytics added later. It currently covers these only under "third-party service providers".
 - [ ] Cookie or consent banner. Not needed with the current setup (no advertising cookies, cookieless analytics). Revisit if GA4 or ad pixels are added.
 
 ## Operations

@@ -47,7 +47,7 @@ src/
   app/                    Routes (one folder per URL), sitemap, robots, OG image
     api/forms/[form]/     POST endpoint for every form
   components/
-    Brand.tsx             TEMPORARY wordmark — the only place the logo renders
+    Brand.tsx             Logo — the only place the logo renders
     ServicePage.tsx       Template used by all five service pages
     sections.tsx          Hero, section, grid, process, FAQ, CTA, breadcrumbs…
     forms/                LeadForm (client), Field, Turnstile, LazyLeadForm
@@ -75,13 +75,14 @@ Items marked `CONFIRM` came from the previous website and need client sign-off. 
 
 **Job openings** are in `src/content/careers.ts`. Remove filled roles. If the list is empty, the careers page shows a general-application option instead.
 
-## Replacing the temporary logo
+## Logo and brand colours
 
-`src/components/Brand.tsx` is the only component that renders the brand mark. Replace its contents with the approved SVG and every placement updates (header, footer). Also replace:
+The logo and colours come from the existing omnigrouphr.com website.
 
-- `src/app/icon.svg` (favicon placeholder)
-- the wordmark in `src/app/opengraph-image.tsx` (social sharing image)
-- the colour tokens in `src/app/globals.css` (`@theme`), if the brand palette changes
+- `public/brand/omnigroup-hr-logo.png` is the horizontal logo (white PNG). `src/components/Brand.tsx` uses it as a CSS mask, so it shows in brand blue on light backgrounds and white on navy. The header and footer both use this component.
+- `src/app/icon.png` and `src/app/apple-icon.png` are the favicons, made from the square logo.
+- `src/app/opengraph-image.tsx` builds the social-sharing image from the same logo.
+- Brand colours are the `@theme` tokens in `src/app/globals.css`: logo blue `#23398E`, deep navy `#22274F` and light blue `#9BBDFF`. Change colours there only.
 
 ## Forms and lead delivery
 

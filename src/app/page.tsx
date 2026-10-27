@@ -34,7 +34,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-line bg-sand">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,rgb(13_107_102/0.12),transparent_40%),radial-gradient(circle_at_0%_100%,rgb(215_180_106/0.16),transparent_35%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,rgb(35_57_142/0.12),transparent_40%),radial-gradient(circle_at_0%_100%,rgb(155_189_255/0.22),transparent_35%)]"
         />
         <div className="container-page relative grid gap-12 py-14 md:py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-24">
           <div>
@@ -123,7 +123,7 @@ export default function HomePage() {
             href="/virtual-assistant-services"
             className="group on-navy relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-navy p-7 text-on-navy shadow-lift md:p-9 lg:row-span-2"
           >
-            <span className="flex size-12 items-center justify-center rounded-xl bg-navy-raised text-brass">
+            <span className="flex size-12 items-center justify-center rounded-xl bg-navy-raised text-highlight">
               <Icon name="assistant" className="size-6" />
             </span>
             <p className="eyebrow mt-8">Featured service</p>
@@ -132,12 +132,12 @@ export default function HomePage() {
             <ul className="mt-6 grid gap-2 text-[0.9375rem]">
               {va.offerings.items.map((o) => (
                 <li key={o.title} className="flex gap-2.5">
-                  <Check className="mt-0.5 size-4 shrink-0 text-brass" aria-hidden="true" />
+                  <Check className="mt-0.5 size-4 shrink-0 text-highlight" aria-hidden="true" />
                   {o.title}
                 </li>
               ))}
             </ul>
-            <span className="mt-auto inline-flex items-center gap-2 pt-8 font-semibold text-brass">
+            <span className="mt-auto inline-flex items-center gap-2 pt-8 font-semibold text-highlight">
               Explore VA services <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Link>

@@ -1,25 +1,23 @@
 import Link from "next/link";
 
 /**
- * TEMPORARY WORDMARK — placeholder until OmniGroup HR supplies its approved
- * logo. This is the only component that renders the brand mark; replace its
- * contents with the approved SVG (or next/image) and every usage updates.
- * Keep the accessible name "OmniGroup HR home".
+ * OmniGroup HR logo (from the existing website). The single white PNG is
+ * used as a CSS mask, so it renders in brand blue on light backgrounds and
+ * white on navy without a second asset.
  */
 export function Brand({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {
-  const text = tone === "light" ? "text-on-navy" : "text-ink";
-  const badge = tone === "light" ? "border-brass text-brass" : "border-accent text-accent";
   return (
-    <Link href="/" aria-label="OmniGroup HR home" className={`inline-flex items-center gap-2 ${className}`}>
-      <span className={`font-display text-[1.375rem] leading-none tracking-tight ${text}`} aria-hidden="true">
-        OmniGroup
-      </span>
+    <Link href="/" aria-label="OmniGroup HR home" className={`inline-flex ${className}`}>
       <span
-        className={`rounded-[5px] border px-1.5 py-0.5 text-[0.6875rem] font-bold leading-none tracking-[0.12em] ${badge}`}
         aria-hidden="true"
-      >
-        HR
-      </span>
+        className={`block h-10 w-[178px] md:h-12 md:w-[213px] ${tone === "light" ? "bg-white" : "bg-accent"}`}
+        style={{
+          maskImage: "url(/brand/omnigroup-hr-logo.png)",
+          maskSize: "contain",
+          maskRepeat: "no-repeat",
+          maskPosition: "left center",
+        }}
+      />
     </Link>
   );
 }

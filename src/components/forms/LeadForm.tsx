@@ -130,7 +130,7 @@ export function LeadForm({
   if (status.state === "success") {
     return (
       <div role="status" className={`rounded-2xl p-6 md:p-8 ${dark ? "bg-navy text-on-navy" : "bg-success-tint"}`}>
-        <CircleCheck className={`size-8 ${dark ? "text-brass" : "text-success"}`} aria-hidden="true" />
+        <CircleCheck className={`size-8 ${dark ? "text-highlight" : "text-success"}`} aria-hidden="true" />
         <h3 ref={successRef} tabIndex={-1} className="mt-4 text-2xl outline-none">
           {form.success.heading}
         </h3>

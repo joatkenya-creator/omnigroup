@@ -51,7 +51,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-sand">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgb(13_107_102/0.09),transparent_45%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgb(35_57_142/0.09),transparent_45%)]" />
       <div className="container-page relative py-12 md:py-20">
         <Breadcrumbs crumbs={crumbs} />
         <div className={`mt-8 grid gap-10 ${aside ? "lg:grid-cols-[1.35fr_1fr] lg:items-end" : ""}`}>
@@ -147,7 +147,7 @@ export function ProcessSteps({ steps }: { steps: Item[] }) {
     <ol className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line md:grid-cols-2 lg:grid-cols-4 [.on-navy_&]:border-navy-line [.on-navy_&]:bg-navy-line">
       {steps.map((step, i) => (
         <li key={step.title} className="bg-white p-6 md:p-7 [.on-navy_&]:bg-navy-raised">
-          <span className="font-display text-4xl text-accent [.on-navy_&]:text-brass" aria-hidden="true">
+          <span className="font-display text-4xl text-accent [.on-navy_&]:text-highlight" aria-hidden="true">
             {String(i + 1).padStart(2, "0")}
           </span>
           <h3 className="mt-4 font-sans text-lg font-semibold tracking-normal">

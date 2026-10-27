@@ -30,7 +30,7 @@ export default function ServicesPage() {
                 className="group card grid gap-6 p-7 transition-shadow hover:shadow-lift md:grid-cols-[auto_1fr_auto] md:items-center md:p-9"
               >
                 <span
-                  className={`flex size-14 items-center justify-center rounded-2xl ${i === 0 ? "bg-navy text-brass" : "bg-accent-tint text-accent"}`}
+                  className={`flex size-14 items-center justify-center rounded-2xl ${i === 0 ? "bg-navy text-highlight" : "bg-accent-tint text-accent"}`}
                 >
                   <Icon name={s.icon} className="size-6" />
                 </span>
