@@ -1,4 +1,23 @@
+import Image from "next/image";
 import Link from "next/link";
+
+/**
+ * Veteran-owned credential badge, the client-supplied JPG shown as-is.
+ * Unoptimized because the Worker has no image-optimization binding; the
+ * 34 KB source is already small. Size it with a height class; width follows.
+ */
+export function VeteranBadge({ className = "" }: { className?: string }) {
+  return (
+    <Image
+      src="/brand/veteran-owned-business.jpg"
+      width={500}
+      height={375}
+      alt="Veteran-Owned Business logo"
+      unoptimized
+      className={`w-auto ${className}`}
+    />
+  );
+}
 
 /**
  * OmniGroup HR logo (from the existing website). The single white PNG is

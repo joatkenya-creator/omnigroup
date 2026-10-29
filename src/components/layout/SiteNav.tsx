@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { VeteranBadge } from "@/components/Brand";
 import { mainNav, serviceNav, site } from "@/content/site";
 
 type Panel = "services" | "mobile";
@@ -108,6 +109,8 @@ export function SiteNav() {
           Request a consultation
         </Link>
       </div>
+
+      <VeteranBadge className="mr-3 h-12 lg:ml-4 lg:mr-0 lg:hidden xl:block" />
 
       {/* Mobile */}
       <button

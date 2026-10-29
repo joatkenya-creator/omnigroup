@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Brand } from "@/components/Brand";
+import { Brand, VeteranBadge } from "@/components/Brand";
 import { LazyLeadForm } from "@/components/forms/LazyLeadForm";
 import { footerNav, site } from "@/content/site";
 
@@ -38,6 +38,11 @@ export function SiteFooter() {
                 </address>
               </li>
             </ul>
+            <h2 className="mt-10 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-highlight">Business credentials</h2>
+            {/* White plate: the JPG has a white background that would otherwise show as a box on navy. */}
+            <div className="mt-4 inline-block rounded-[var(--radius-card)] bg-white p-3">
+              <VeteranBadge className="h-32 sm:h-36" />
+            </div>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3">
