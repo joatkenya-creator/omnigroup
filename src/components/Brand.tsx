@@ -2,17 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 /**
- * Veteran-owned credential badge, the client-supplied JPG shown as-is.
- * Unoptimized because the Worker has no image-optimization binding; the
- * 34 KB source is already small. Size it with a height class; width follows.
+ * Veteran credential badge, the client-supplied artwork with only its blank
+ * white canvas trimmed and downscaled (3.2 MB -> 73 KB). Unoptimized because
+ * the Worker has no image-optimization binding. Size it with a height class.
  */
 export function VeteranBadge({ className = "" }: { className?: string }) {
   return (
     <Image
-      src="/brand/veteran-owned-business.jpg"
-      width={500}
-      height={375}
-      alt="Veteran-Owned Business logo"
+      src="/brand/veteran-powered-business.png"
+      width={640}
+      height={384}
+      alt="Veteran Powered Business logo"
       unoptimized
       className={`w-auto ${className}`}
     />
