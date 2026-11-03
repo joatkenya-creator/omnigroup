@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Info } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
@@ -22,6 +23,7 @@ export function ServicePage({ service: s }: { service: Service }) {
         eyebrow={s.eyebrow}
         title={s.title}
         lead={s.lead}
+        image={s.heroImage ? { src: s.heroImage, position: "object-right" } : undefined}
         aside={
           <div className="card p-6 md:p-7">
             <p className="text-sm font-semibold uppercase tracking-[0.08em] text-muted">At a glance</p>
@@ -53,6 +55,16 @@ export function ServicePage({ service: s }: { service: Service }) {
             {s.intro.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
+            {s.introImage && (
+              <Image
+                src={s.introImage.src}
+                alt={s.introImage.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="!mt-8 aspect-[3/2] w-full rounded-[var(--radius-card)] object-cover"
+              />
+            )}
           </div>
         </div>
         <ItemGrid items={s.problems.items} />
@@ -80,7 +92,21 @@ export function ServicePage({ service: s }: { service: Service }) {
       )}
 
       <Section tone="navy" id="how-it-works" labelledBy="process-heading">
-        <SectionHeading id="process-heading" eyebrow="Process" title={s.process.heading} lead={s.process.lead} />
+        {s.processImage ? (
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+            <SectionHeading id="process-heading" eyebrow="Process" title={s.process.heading} lead={s.process.lead} />
+            <Image
+              src={s.processImage.src}
+              alt={s.processImage.alt}
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="aspect-[3/2] w-full rounded-[var(--radius-card)] object-cover object-[60%_30%]"
+            />
+          </div>
+        ) : (
+          <SectionHeading id="process-heading" eyebrow="Process" title={s.process.heading} lead={s.process.lead} />
+        )}
         <ProcessSteps steps={s.process.steps} />
       </Section>
 

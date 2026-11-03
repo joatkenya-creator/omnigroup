@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Icon } from "@/components/Icon";
-import { CtaBand, FaqList, ProcessSteps, Section, SectionHeading, ServiceLinkCard, Testimonials } from "@/components/sections";
+import { CtaBand, FaqList, ProcessSteps, Section, SectionHeading, ServiceLinkCard, Testimonials, TrustedBy } from "@/components/sections";
 import { differentiators, engagementSteps, homeFaqs } from "@/content/home";
 import { industries } from "@/content/industries";
 import { services } from "@/content/services";
@@ -31,18 +32,17 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line bg-sand">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,rgb(35_57_142/0.12),transparent_40%),radial-gradient(circle_at_0%_100%,rgb(155_189_255/0.22),transparent_35%)]"
-        />
+      <section className="on-navy relative overflow-hidden border-b border-navy-line bg-navy text-on-navy">
+        <Image src="/images/home/virtual-meeting.webp" alt="" fill preload sizes="100vw" className="object-cover object-center" />
+        {/* Solid enough that muted text stays above WCAG AA (4.5:1) even over white areas of the photo. */}
+        <div aria-hidden="true" className="absolute inset-0 bg-navy/85" />
         <div className="container-page relative grid gap-12 py-14 md:py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-24">
           <div>
             <p className="eyebrow">HR, staffing &amp; virtual support</p>
             <h1 className="mt-5 text-[2.6rem] leading-[1.05] md:text-6xl lg:text-[4.25rem]">
               The people and support your business needs to grow.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-navy-muted md:text-xl">
               From virtual assistants to specialist recruitment and HR strategy, OmniGroup HR helps organizations operate
               efficiently, resolve workplace challenges and grow with confidence.
             </p>
@@ -54,7 +54,7 @@ export default function HomePage() {
                 Explore virtual assistant services
               </Link>
             </div>
-            <p className="mt-6 text-ink-soft">
+            <p className="mt-6 text-on-navy-muted">
               Looking for work?{" "}
               <Link href="/careers" className="text-link">
                 View current openings
@@ -62,7 +62,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <nav aria-labelledby="intent-heading" className="card p-2.5 shadow-lift">
+          <nav aria-labelledby="intent-heading" className="card p-2.5 text-ink shadow-lift">
             <h2 id="intent-heading" className="px-4 pb-2 pt-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-muted">
               What do you need help with?
             </h2>
@@ -110,6 +110,8 @@ export default function HomePage() {
         </ul>
       </section>
 
+      <TrustedBy />
+
       {/* Services */}
       <Section labelledBy="services-heading">
         <SectionHeading
@@ -123,6 +125,15 @@ export default function HomePage() {
             href="/virtual-assistant-services"
             className="group on-navy relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-navy p-7 text-on-navy shadow-lift md:p-9 lg:row-span-2"
           >
+            <div className="relative -mx-7 -mt-7 mb-7 aspect-[16/9] md:-mx-9 md:-mt-9">
+              <Image
+                src="/images/va/flexible-support.webp"
+                alt="Laptop open on a wooden desk beside a potted plant and notebooks"
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </div>
             <span className="flex size-12 items-center justify-center rounded-xl bg-navy-raised text-highlight">
               <Icon name="assistant" className="size-6" />
             </span>
@@ -141,10 +152,19 @@ export default function HomePage() {
               Explore VA services <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Link>
-          <ServiceLinkCard slug="staffing-recruitment" />
-          <ServiceLinkCard slug="hr-services" />
-          <ServiceLinkCard slug="leadership-development" />
-          <ServiceLinkCard slug="mediation-workplace-support" />
+          <ServiceLinkCard
+            slug="staffing-recruitment"
+            image={{ src: "/images/home/signing-document.webp", alt: "Close-up of a hand signing a document with a pen" }}
+          />
+          <ServiceLinkCard slug="hr-services" image={{ src: "/images/industries/hr-services.webp", alt: "", contain: true }} />
+          <ServiceLinkCard
+            slug="leadership-development"
+            image={{ src: "/images/about/modern-office-view.webp", alt: "Empty modern office with desks overlooking a city skyline" }}
+          />
+          <ServiceLinkCard
+            slug="mediation-workplace-support"
+            image={{ src: "/images/home/business-handshake.webp", alt: "Two people in business suits shaking hands" }}
+          />
         </div>
       </Section>
 
@@ -165,6 +185,7 @@ export default function HomePage() {
           <ul className="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
             {industries.map((ind) => (
               <li key={ind.id} className="bg-white p-6">
+                <Image src={ind.image} alt="" width={1200} height={1698} className="mb-4 size-14 rounded-lg object-cover" />
                 <h3 className="font-sans text-lg font-semibold tracking-normal">
                   <Link href={`/industries#${ind.id}`} className="hover:text-accent">
                     {ind.name}
@@ -187,12 +208,22 @@ export default function HomePage() {
 
       {/* How it works */}
       <Section tone="navy" labelledBy="how-heading">
-        <SectionHeading
-          id="how-heading"
-          eyebrow="How it works"
-          title="A clear process from first conversation to results"
-          lead="Whatever the service, every engagement starts with understanding your organization."
-        />
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+          <SectionHeading
+            id="how-heading"
+            eyebrow="How it works"
+            title="A clear process from first conversation to results"
+            lead="Whatever the service, every engagement starts with understanding your organization."
+          />
+          <Image
+            src="/images/va/streamlined-process.webp"
+            alt="Smiling professional taking notes at her desk"
+            width={1200}
+            height={800}
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            className="aspect-[3/2] w-full rounded-[var(--radius-card)] object-cover object-[60%_30%]"
+          />
+        </div>
         <ProcessSteps steps={engagementSteps} />
       </Section>
 
@@ -209,6 +240,14 @@ export default function HomePage() {
             <Link href="/about" className="text-link mt-8 inline-block">
               More about our approach
             </Link>
+            <Image
+              src="/images/home/our-philosophy.webp"
+              alt="Boardroom table laid out with printed reports and a tablet showing growth charts"
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="mt-10 aspect-[3/2] w-full rounded-[var(--radius-card)] object-cover"
+            />
           </div>
           <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
             {differentiators.map((d) => (
@@ -229,7 +268,16 @@ export default function HomePage() {
           Get started
         </h2>
         <div className="grid gap-5 md:grid-cols-2">
-          <div className="card flex flex-col p-8 md:p-10">
+          <div className="card flex flex-col overflow-hidden p-8 md:p-10">
+            <div className="relative -mx-8 -mt-8 mb-8 aspect-[16/9] md:-mx-10 md:-mt-10">
+              <Image
+                src="/images/home/business-handshake.webp"
+                alt="Two people in business suits shaking hands"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
             <p className="eyebrow">For employers</p>
             <h3 className="mt-3 text-3xl">Find talent or support</h3>
             <p className="mt-3 flex-1 text-lg text-muted">
@@ -245,7 +293,16 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="card flex flex-col p-8 md:p-10">
+          <div className="card flex flex-col overflow-hidden p-8 md:p-10">
+            <div className="relative -mx-8 -mt-8 mb-8 aspect-[16/9] md:-mx-10 md:-mt-10">
+              <Image
+                src="/images/careers/woman-using-laptop.webp"
+                alt="Woman talking on the phone while working on a laptop"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-right"
+              />
+            </div>
             <p className="eyebrow">For job seekers</p>
             <h3 className="mt-3 text-3xl">Start your next role</h3>
             <p className="mt-3 flex-1 text-lg text-muted">

@@ -55,3 +55,15 @@ export const homeFaqs: Faq[] = [
     a: "Visit our careers page to see current openings and submit an application.",
   },
 ];
+
+/** Client logos from the previous Clients page; display confirmed by OmniGroup HR on 3 Nov 2026. */
+export const clientLogos = [
+  { name: "City of Richmond", src: "/images/clients/logo-city-of-richmond.png", width: 1200, height: 1200 },
+  { name: "City of Virginia Beach", src: "/images/clients/logo-city-of-virginia-beach.png", width: 399, height: 126 },
+  { name: "Hibiscus Therapy & Consulting Services", src: "/images/clients/logo-hibiscus.png", width: 1200, height: 360 },
+  { name: "R.I.S.E. Counseling & Consulting Services", src: "/images/clients/logo-rise.png", width: 834, height: 785 },
+  { name: "Black Brand", src: "/images/clients/logo-black-brand.png", width: 480, height: 480 },
+  { name: "Bridge Apparel Co.", src: "/images/clients/logo-bridge-apparel-co.png", width: 225, height: 225 },
+  { name: "Options Eatery", src: "/images/clients/logo-options-eatery.png", width: 250, height: 250 },
+  { name: "Shenanigans Hairtique", src: "/images/clients/logo-shenanigan-h.png", width: 276, height: 271 },
+];

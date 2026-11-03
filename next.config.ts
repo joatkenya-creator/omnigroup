@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  images: {
+    // The Worker has no image-optimization binding; files in public/images/ are
+    // pre-sized and compressed by scripts/import-images.mjs instead.
+    unoptimized: true,
+  },
   env: {
     NEXT_PUBLIC_BUILD_YEAR: String(new Date().getFullYear()),
   },
@@ -57,6 +62,10 @@ const nextConfig: NextConfig = {
       { source: "/contact-us", destination: "/contact", permanent: true },
       { source: "/apply-now", destination: "/careers/apply", permanent: true },
       { source: "/clients", destination: "/about", permanent: true },
+      // Wix duplicate of the VA page.
+      { source: "/blank-4", destination: "/virtual-assistant-services", permanent: true },
+      // No accessibility statement on the new site yet; see docs/CONTENT-APPROVAL.md.
+      { source: "/accessibility-statement", destination: "/", permanent: false },
       ...(apexHost !== productionHost
         ? [
             {

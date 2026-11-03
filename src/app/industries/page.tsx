@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaBand, PageHero, Section, SectionHeading } from "@/components/sections";
@@ -44,9 +45,12 @@ export default function IndustriesPage() {
         <div className="mt-12 divide-y divide-line border-y border-line">
           {industries.map((ind) => (
             <article key={ind.id} id={ind.id} aria-labelledby={`${ind.id}-heading`} className="grid gap-6 py-12 lg:grid-cols-[1fr_1.4fr_1fr] lg:gap-10">
-              <h2 id={`${ind.id}-heading`} className="text-3xl">
-                {ind.name}
-              </h2>
+              <div>
+                <Image src={ind.image} alt="" width={1200} height={1698} className="mb-5 size-20 rounded-xl object-cover" />
+                <h2 id={`${ind.id}-heading`} className="text-3xl">
+                  {ind.name}
+                </h2>
+              </div>
               <div>
                 <p className="text-lg font-semibold text-ink">{ind.summary}</p>
                 <p className="mt-3 leading-relaxed text-ink-soft">{ind.context}</p>

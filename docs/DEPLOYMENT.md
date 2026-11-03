@@ -127,6 +127,8 @@ These are built into `next.config.ts`:
 | `/about-us` | `/about` |
 | `/contact-us` | `/contact` |
 | `/apply-now` | `/careers/apply` |
+| `/blank-4` (Wix duplicate VA page) | `/virtual-assistant-services` |
+| `/accessibility-statement` | `/` (temporary 307 until the statement is ported) |
 | `/clients` | `/about` |
 
 `/virtual-assistant-services`, `/careers`, `/privacy-policy` and `/eeo-statement` keep their existing URLs.

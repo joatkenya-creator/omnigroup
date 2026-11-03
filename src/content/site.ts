@@ -5,9 +5,9 @@
  */
 export const site = {
   name: "OmniGroup HR",
-  /** CONFIRM: legal entity named in the previous privacy policy and EEO statement. */
+  /** Legal entity named in the privacy policy and EEO statement; confirmed. */
   legalName: "Omnicruit LLC",
-  /** CONFIRM: footer relationship statement on the previous site. */
+  /** Relationship statement, shown in the footer and on About; confirmed. */
   parentStatement: "An Omnicruit International company",
   tagline: "Connecting talent. Empowering success.",
   description:
@@ -17,12 +17,10 @@ export const site = {
   /** Date the published content was last reviewed. Update when copy changes. */
   contentUpdated: "2026-10-24",
   contact: {
-    /** CONFIRM */
     email: "hr@omnigrouphr.com",
-    /** CONFIRM */
     phoneDisplay: "(757) 986-9846",
     phoneE164: "+17579869846",
-    /** CONFIRM: whether this address should be published and used in structured data. */
+    /** Confirmed for publication, including in structured data. */
     address: {
       street: "739 High St",
       city: "Portsmouth",

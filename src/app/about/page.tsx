@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CtaBand, PageHero, Section, SectionHeading } from "@/components/sections";
+import { CtaBand, PageHero, Section, SectionHeading, TrustedBy } from "@/components/sections";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -11,19 +12,24 @@ export const metadata = pageMetadata({
   path: "/about",
 });
 
-/** CONFIRM: names, titles and biographies from the previous About Us page. No photos until supplied and approved. */
+/** Names, titles, biographies and headshots from the previous About Us page; confirmed by OmniGroup HR. */
 const leadership = [
   {
     name: "Tim Armstrong",
     role: "CEO & Founder",
+    photo: "/team/tim-armstrong.jpg",
     bio: "Tim leads OmniGroup HR with a focus on workforce development, operational efficiency and scalable growth. He works with organizations on recruitment solutions, HR strategy and operational support, with an emphasis on building strong teams and systems.",
   },
   {
     name: "Patricia Depra",
     role: "Operations Manager",
+    photo: "/team/patricia-depra.jpg",
     bio: "Patricia leads operations with a focus on efficiency, organization and process execution. Her background in recruitment and HR supports well-managed workflows, timelines and client engagements.",
   },
 ];
+
+/** Client names from the previous Clients page; confirmed for publication by OmniGroup HR. */
+const clients = ["City of Richmond", "City of Virginia Beach"];
 
 const approach = [
   {
@@ -45,6 +51,7 @@ export default function AboutPage() {
     <>
       <PageHero
         crumbs={[{ name: "About", path: "/about" }]}
+        image={{ src: "/images/about/hero-glass-facade.webp" }}
         eyebrow="About OmniGroup HR"
         title="More than filling positions"
         lead="We help organizations build strong teams and sustainable systems, with a people-first approach tailored to each client's goals, values and vision."
@@ -52,7 +59,17 @@ export default function AboutPage() {
 
       <Section labelledBy="who-heading">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
-          <SectionHeading id="who-heading" eyebrow="Who we are" title="A partner for your people and operations" />
+          <div>
+            <SectionHeading id="who-heading" eyebrow="Who we are" title="A partner for your people and operations" />
+            <Image
+              src="/images/home/new-opportunity-team.webp"
+              alt="OmniGroup HR team members talking together in an office"
+              width={1200}
+              height={675}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="mt-10 aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover object-[35%_center]"
+            />
+          </div>
           <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
             <p>
               OmniGroup HR supports organizations through virtual assistant services, executive search, staffing and recruitment,
@@ -66,13 +83,33 @@ export default function AboutPage() {
               Every engagement is shaped around the client. We take the time to understand your organization before recommending
               people, processes or support.
             </p>
+            <p>
+              Backed by a combined 90+ years of leadership experience, we help companies scale efficiently with the right talent
+              and strategic hiring solutions.
+            </p>
+            <div className="card p-6">
+              <p className="eyebrow">Our clients</p>
+              <p className="mt-2 text-ink">
+                We are proud to partner with clients including the {clients.join(" and the ")}.
+              </p>
+            </div>
             <p className="text-base text-muted">{site.parentStatement}.</p>
           </div>
         </div>
       </Section>
 
+      <TrustedBy />
+
       <Section tone="sand" labelledBy="approach-heading">
         <SectionHeading id="approach-heading" eyebrow="How we support you" title="World-class talent solutions" />
+        <Image
+          src="/images/about/modern-office-view.webp"
+          alt="Empty modern office with desks overlooking a city skyline"
+          width={1200}
+          height={800}
+          sizes="100vw"
+          className="mt-10 aspect-[21/9] w-full rounded-[var(--radius-card)] object-cover"
+        />
         <ul className="mt-12 grid gap-5 md:grid-cols-3">
           {approach.map((a) => (
             <li key={a.title} className="card p-7">
@@ -91,6 +128,15 @@ export default function AboutPage() {
         <ul className="mt-12 grid gap-5 md:grid-cols-2">
           {leadership.map((p) => (
             <li key={p.name} className="card p-7 md:p-9">
+              {/* Unoptimized: the Worker has no image-optimization binding; sources are 480x600. */}
+              <Image
+                src={p.photo}
+                width={480}
+                height={600}
+                alt={`${p.name}, ${p.role}`}
+                unoptimized
+                className="mb-6 aspect-[4/5] w-36 rounded-lg object-cover object-top"
+              />
               <h3 className="text-2xl">{p.name}</h3>
               <p className="mt-1 font-semibold text-accent">{p.role}</p>
               <p className="mt-4 leading-relaxed text-ink-soft">{p.bio}</p>

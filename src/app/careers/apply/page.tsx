@@ -17,6 +17,7 @@ export default function ApplyPage() {
           { name: "Careers", path: "/careers" },
           { name: "Apply now", path: "/careers/apply" },
         ]}
+        image={{ src: "/images/careers/apply-hero-office-interior.webp" }}
         eyebrow="Apply now"
         title="Apply for a position"
         lead="Complete the form below. It takes about three minutes, and you'll need your resume as a PDF or Word document."

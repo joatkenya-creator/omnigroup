@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Careers & Job Openings",
   description:
-    "Explore current job openings with OmniGroup HR, including virtual assistant, contracts administration and facilities roles, and apply online.",
+    "Explore careers with OmniGroup HR, see current job openings and submit an application online.",
   path: "/careers",
 });
 
@@ -22,6 +22,7 @@ export default function CareersPage() {
     <>
       <PageHero
         crumbs={[{ name: "Careers", path: "/careers" }]}
+        image={{ src: "/images/careers/hero-customer-service-team.webp", position: "object-[30%_center]" }}
         eyebrow="Careers"
         title="Build your future with us"
         lead="We invest in people. Explore professional and non-professional opportunities and apply online in a few minutes."

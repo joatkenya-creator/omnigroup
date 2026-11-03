@@ -26,11 +26,11 @@ Edit the copy in `src/content/` (see README) and the legal pages in `src/app/pri
 
 ## Company facts (`src/content/site.ts`)
 
-- [ ] Email: `hr@omnigrouphr.com`
-- [ ] Phone: (757) 986-9846
-- [ ] Address: 739 High St, Portsmouth, VA 23704. Should it be published, and used in Organization structured data?
-- [ ] Legal entity: "Omnicruit LLC" (named in the old privacy policy and EEO statement)
-- [ ] Relationship statement: "An Omnicruit International company" (shown in the footer and on the About page)
+- [x] Email: `hr@omnigrouphr.com`. Confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Phone: (757) 986-9846. Confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Address: 739 High St, Portsmouth, VA 23704. Published and used in Organization structured data. Confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Legal entity: "Omnicruit LLC" (named in the old privacy policy and EEO statement). Confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Relationship statement: "An Omnicruit International company" (shown in the footer and on the About page). Confirmed by OmniGroup HR, 30 Oct 2026.
 - [ ] Social accounts: LinkedIn, Facebook and Instagram, as linked in the old footer.
   - The old header also linked to **Wix Studio's** social accounts, which looks like a template leftover. These were not carried over.
 - [ ] Geographic coverage. Copy says "U.S. organizations" and mentions cross-border recruitment support. Confirm the target markets.
@@ -77,27 +77,27 @@ Edit the copy in `src/content/` (see README) and the legal pages in `src/app/pri
 
 ## About (`src/app/about/page.tsx`)
 
-- [ ] Tim Armstrong: CEO & Founder. Confirm title and biography.
-- [ ] Patricia Depra: Operations Manager. Confirm title and biography.
-- [ ] Headshots: none used. Supply approved photos if wanted.
-- [ ] **"Combined 90+ years of leadership experience"** is **not published** until verified.
+- [x] Tim Armstrong: CEO & Founder. Title and biography confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Patricia Depra: Operations Manager. Title and biography confirmed by OmniGroup HR, 30 Oct 2026.
+- [x] Headshots: taken from the existing website's About page (`public/team/`), as instructed on 30 Oct 2026.
+- [x] **"Combined 90+ years of leadership experience"**: confirmed by OmniGroup HR, 31 Oct 2026. Published in the "Who we are" section of `/about`, using the old site's wording.
 
 ## Clients and proof
 
-- [ ] The old Clients page named the **City of Richmond** and the **City of Virginia Beach** and showed several logos.
-  - **None of this is published.** `/clients` redirects to `/about`.
-  - To publish client names, logos, case studies or testimonials, provide written permission and the approved wording. Testimonials go in `src/content/home.ts`.
+- [x] The old Clients page named the **City of Richmond** and the **City of Virginia Beach**. Names confirmed by OmniGroup HR, 31 Oct 2026, and published in an "Our clients" panel on `/about`. `/clients` still redirects to `/about`.
+- [x] Client logos. All eight logos from the old Clients page identified and confirmed for display by OmniGroup HR, 3 Nov 2026. Shown in a "Trusted by" strip on `/` and `/about` (`clientLogos` in `src/content/home.ts`).
+- [ ] Case studies or testimonials. Provide written permission and the approved wording. Testimonials go in `src/content/home.ts`.
 - [ ] Any awards, certifications, memberships or statistics to add as trust signals.
 
 ## Careers (`src/content/careers.ts`)
 
-- [ ] Five openings were copied from the old careers page:
+- [x] Five openings were copied from the old careers page:
   - Virtual Assistant
   - Contracts Administrator
   - Subcontracts Administrator
   - Event Setup Crew / Staff
   - Maintenance Worker
-- [ ] **Remove any that are no longer open.**
+- [x] **None are still open** (confirmed by OmniGroup HR, 30 Oct 2026). All five were removed; the careers page shows "No open positions right now" and a general application option.
 - [ ] Should job-posting structured data (Google for Jobs) be added? It needs date posted, closing date, employment type and pay details.
 - [ ] Who receives applications? Set `CAREERS_TO_EMAIL`.
 - [ ] Candidate data retention period.
@@ -106,6 +106,7 @@ Edit the copy in `src/content/` (see README) and the legal pages in `src/app/pri
 
 - [x] **Privacy Policy** and **EEO Statement** are the existing website's text, unchanged, as instructed on 27 Oct 2026.
 - [ ] Optional: ask legal counsel whether the privacy policy should mention the new site's spam-protection check (Cloudflare Turnstile) and any analytics added later. It currently covers these only under "third-party service providers".
+- [ ] **Accessibility Statement.** The old site has one at `/accessibility-statement`; the new site does not. It temporarily redirects to the home page. Port the old text unchanged (like the Privacy Policy), or confirm that it should be dropped.
 - [ ] Cookie or consent banner. Not needed with the current setup (no advertising cookies, cookieless analytics). Revisit if GA4 or ad pixels are added.
 
 ## Operations

@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight, ChevronRight, Plus } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { services, type Faq, type Item, type ServiceSlug } from "@/content/services";
-import { testimonials } from "@/content/home";
+import { clientLogos, testimonials } from "@/content/home";
 import { breadcrumbJsonLd, type Crumb } from "@/lib/seo";
 
 export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
@@ -12,16 +13,16 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
   return (
     <>
       <nav aria-label="Breadcrumb">
-        <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted">
+        <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted [.on-navy_&]:text-on-navy-muted">
           {all.map((c, i) => (
             <li key={c.path} className="flex items-center gap-1.5">
               {i > 0 && <ChevronRight className="size-3.5" aria-hidden="true" />}
               {i === all.length - 1 ? (
-                <span aria-current="page" className="text-ink-soft">
+                <span aria-current="page" className="text-ink-soft [.on-navy_&]:text-on-navy">
                   {c.name}
                 </span>
               ) : (
-                <Link href={c.path} className="hover:text-accent hover:underline">
+                <Link href={c.path} className="hover:text-accent hover:underline [.on-navy_&]:hover:text-highlight">
                   {c.name}
                 </Link>
               )}
@@ -41,6 +42,7 @@ export function PageHero({
   lead,
   children,
   aside,
+  image,
 }: {
   crumbs: Crumb[];
   eyebrow: string;
@@ -48,17 +50,27 @@ export function PageHero({
   lead: string;
   children?: ReactNode;
   aside?: ReactNode;
+  /** Decorative background photo; `position` is an object-position class for the focal point. */
+  image?: { src: string; position?: string };
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-sand">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgb(35_57_142/0.09),transparent_45%)]" />
+    <section className={`relative overflow-hidden border-b ${image ? "on-navy border-navy-line bg-navy text-on-navy" : "border-line bg-sand"}`}>
+      {image ? (
+        <>
+          <Image src={image.src} alt="" fill preload sizes="100vw" className={`object-cover ${image.position ?? "object-center"}`} />
+          {/* Solid enough that muted text stays above WCAG AA (4.5:1) even over white areas of the photo. */}
+          <div aria-hidden="true" className="absolute inset-0 bg-navy/85" />
+        </>
+      ) : (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgb(35_57_142/0.09),transparent_45%)]" />
+      )}
       <div className="container-page relative py-12 md:py-20">
         <Breadcrumbs crumbs={crumbs} />
         <div className={`mt-8 grid gap-10 ${aside ? "lg:grid-cols-[1.35fr_1fr] lg:items-end" : ""}`}>
           <div className="max-w-3xl">
             <p className="eyebrow">{eyebrow}</p>
             <h1 className="mt-4 text-4xl leading-[1.08] md:text-[3.5rem]">{title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">{lead}</p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl [.on-navy_&]:text-on-navy-muted">{lead}</p>
             {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
           </div>
           {aside}
@@ -210,13 +222,27 @@ export function CtaBand({
   );
 }
 
-export function ServiceLinkCard({ slug, featured = false }: { slug: ServiceSlug; featured?: boolean }) {
+export function ServiceLinkCard({
+  slug,
+  featured = false,
+  image,
+}: {
+  slug: ServiceSlug;
+  featured?: boolean;
+  /** `contain` for illustrations on a white canvas that must not be cropped. */
+  image?: { src: string; alt: string; contain?: boolean };
+}) {
   const s = services[slug];
   return (
     <Link
       href={`/${s.slug}`}
-      className={`group card flex h-full flex-col p-6 transition-shadow hover:shadow-lift md:p-7 ${featured ? "border-accent/40" : ""}`}
+      className={`group card flex h-full flex-col overflow-hidden p-6 transition-shadow hover:shadow-lift md:p-7 ${featured ? "border-accent/40" : ""}`}
     >
+      {image && (
+        <div className="relative -mx-6 -mt-6 mb-6 aspect-[16/9] md:-mx-7 md:-mt-7">
+          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className={image.contain ? "object-contain" : "object-cover"} />
+        </div>
+      )}
       <span className="flex size-11 items-center justify-center rounded-xl bg-accent-tint text-accent">
         <Icon name={s.icon} className="size-5" />
       </span>
@@ -263,5 +289,30 @@ export function Testimonials() {
         ))}
       </ul>
     </Section>
+  );
+}
+
+export function TrustedBy() {
+  return (
+    <section aria-labelledby="trusted-heading" className="border-b border-line bg-white py-12 md:py-14">
+      <div className="container-page">
+        <h2 id="trusted-heading" className="text-center font-sans text-sm font-semibold uppercase tracking-[0.08em] text-muted">
+          Trusted by
+        </h2>
+        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+          {clientLogos.map((c) => (
+            <li key={c.name}>
+              <Image
+                src={c.src}
+                alt={c.name}
+                width={c.width}
+                height={c.height}
+                className="h-14 w-auto max-w-[190px] object-contain md:h-16"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

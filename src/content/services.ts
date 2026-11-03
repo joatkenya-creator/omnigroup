@@ -54,6 +54,12 @@ export type Service = {
   metaDescription: string;
   schemaServiceType: string;
   primaryCta: string;
+  /** Decorative hero background photo. */
+  heroImage?: string;
+  /** Photo shown beside the intro copy. */
+  introImage?: { src: string; alt: string };
+  /** Photo shown beside the process heading. */
+  processImage?: { src: string; alt: string };
   intro: { heading: string; paragraphs: string[] };
   problems: { heading: string; items: Item[] };
   offerings: { heading: string; lead: string; items: Item[] };
@@ -81,6 +87,12 @@ export const services: Record<ServiceSlug, Service> = {
       "Executive and administrative virtual assistants for U.S. businesses: calendar and inbox management, CRM and data, project coordination and customer service support.",
     schemaServiceType: "Virtual assistant services",
     primaryCta: "Discuss your VA needs",
+    heroImage: "/images/va/hero-va-banner.webp",
+    introImage: { src: "/images/va/flexible-support.webp", alt: "Laptop open on a wooden desk beside a potted plant and notebooks" },
+    processImage: {
+      src: "/images/va/streamlined-process.webp",
+      alt: "Smiling virtual assistant taking notes at her desk",
+    },
     intro: {
       heading: "Reliable support, built around how you already work",
       paragraphs: [

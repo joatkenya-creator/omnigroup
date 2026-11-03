@@ -10,11 +10,14 @@ export type Industry = {
   summary: string;
   roles: string[];
   context: string;
+  /** Line-art illustration from the previous About Us page (portrait; crop to a square). */
+  image: string;
 };
 
 export const industries: Industry[] = [
   {
     id: "engineering",
+    image: "/images/industries/engineering.webp",
     name: "Engineering",
     summary: "Mechanical, electrical and structural specialists for technical projects.",
     roles: ["Mechanical engineers", "Electrical engineers", "Structural engineers"],
@@ -23,6 +26,7 @@ export const industries: Industry[] = [
   },
   {
     id: "oil-gas",
+    image: "/images/industries/oil-and-gas.webp",
     name: "Oil & Gas",
     summary: "Engineers, project managers and technical experts for energy companies.",
     roles: ["Engineers", "Project managers", "Technical experts"],
@@ -31,6 +35,7 @@ export const industries: Industry[] = [
   },
   {
     id: "infrastructure",
+    image: "/images/industries/infrastructure.webp",
     name: "Infrastructure",
     summary: "Civil engineers and project consultants for construction, transportation and development.",
     roles: ["Civil engineers", "Project consultants", "Construction and transportation specialists"],
@@ -39,6 +44,7 @@ export const industries: Industry[] = [
   },
   {
     id: "finance",
+    image: "/images/industries/finance.webp",
     name: "Finance",
     summary: "Analysts, accountants and financial strategists who support stability, compliance and growth.",
     roles: ["Financial analysts", "Accountants", "Financial strategists"],
@@ -47,6 +53,7 @@ export const industries: Industry[] = [
   },
   {
     id: "hr",
+    image: "/images/industries/hr-services.webp",
     name: "Human Resources",
     summary: "HR specialists, recruiters and workforce strategists who strengthen culture and efficiency.",
     roles: ["HR specialists", "Recruiters", "Workforce strategists"],

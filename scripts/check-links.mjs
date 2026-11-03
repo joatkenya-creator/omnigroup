@@ -12,7 +12,7 @@
  *        npm run check:links [-- http://localhost:3000]
  */
 const base = process.argv[2] ?? "http://localhost:3000";
-const legacy = { "/our-services": "/services", "/about-us": "/about", "/contact-us": "/contact", "/apply-now": "/careers/apply", "/clients": "/about" };
+const legacy = { "/our-services": "/services", "/about-us": "/about", "/contact-us": "/contact", "/apply-now": "/careers/apply", "/clients": "/about", "/blank-4": "/virtual-assistant-services" };
 
 const pages = new Map(); // path -> { html, status }
 const problems = [];

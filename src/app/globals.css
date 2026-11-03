@@ -167,6 +167,22 @@
     border-color: var(--color-on-navy-muted);
     background: var(--color-navy-raised);
   }
+  /* Primary/secondary buttons placed on a dark (photo) hero. */
+  .on-navy .btn-primary {
+    background: var(--color-on-navy);
+    color: var(--color-ink);
+  }
+  .on-navy .btn-primary:hover {
+    background: var(--color-highlight);
+  }
+  .on-navy .btn-secondary {
+    border-color: var(--color-on-navy-muted);
+    color: var(--color-on-navy);
+  }
+  .on-navy .btn-secondary:hover {
+    background: var(--color-navy-raised);
+    color: var(--color-on-navy);
+  }
   .btn[disabled] {
     opacity: 0.65;
     cursor: progress;
@@ -182,6 +198,10 @@
   .text-link:hover {
     color: var(--color-accent-strong);
     text-decoration-thickness: 2px;
+  }
+  .on-navy .text-link,
+  .on-navy .text-link:hover {
+    color: var(--color-highlight);
   }
 
   .card {

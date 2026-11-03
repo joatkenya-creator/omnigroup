@@ -31,6 +31,7 @@ export default function ContactPage() {
     <>
       <PageHero
         crumbs={[{ name: "Contact", path: "/contact" }]}
+        image={{ src: "/images/home/hero-two-men-meeting.webp" }}
         eyebrow="Contact us"
         title="Request a consultation"
         lead="Tell us what your organization needs and we'll arrange a conversation. If you know exactly what you're looking for, a dedicated form below will get you to the right person faster."
