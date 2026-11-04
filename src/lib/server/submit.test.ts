@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { GENERAL_APPLICATION } from "@/content/careers";
 import { escapeHtml } from "./delivery";
 import { handleSubmission } from "./submit";
 
@@ -118,7 +119,7 @@ describe("handleSubmission", () => {
         lastName: "Rivera",
         email: "sam@example.com",
         phone: "+1 757 555 0100",
-        position: "Virtual Assistant",
+        position: GENERAL_APPLICATION,
         consent: "on",
         cv,
       }),
@@ -134,7 +135,7 @@ describe("handleSubmission", () => {
   it("rejects a disguised executable uploaded as a CV", async () => {
     const fake = new File([new Uint8Array([0x4d, 0x5a, 0x90, 0x00])], "cv.pdf");
     const res = await handleSubmission(
-      request({ firstName: "A", lastName: "B", email: "a@b.co", phone: "5555555555", position: "Virtual Assistant", consent: "on", cv: fake }),
+      request({ firstName: "A", lastName: "B", email: "a@b.co", phone: "5555555555", position: GENERAL_APPLICATION, consent: "on", cv: fake }),
       "application",
     );
     expect(res.status).toBe(422);
