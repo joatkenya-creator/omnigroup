@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 import { VeteranBadge } from "@/components/Brand";
 import { mainNav, serviceNav, site } from "@/content/site";
 
@@ -74,8 +74,8 @@ export function SiteNav() {
                   </li>
                 ))}
                 <li>
-                  <Link href="/services" onClick={close} className="flex h-full items-center rounded-xl p-3 font-semibold text-accent transition-colors hover:bg-sand">
-                    View all services →
+                  <Link href="/services" onClick={close} className="flex h-full items-center gap-1.5 rounded-xl p-3 font-semibold text-accent transition-colors hover:bg-sand">
+                    View all services <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                 </li>
               </ul>

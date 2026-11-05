@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Newsreader } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { Analytics } from "@/components/layout/Analytics";
+import { Connectivity } from "@/components/layout/Connectivity";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { site } from "@/content/site";
@@ -36,8 +37,16 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-US" className={`${body.variable} ${heading.variable} antialiased`}>
+    // suppressHydrationWarning: the script below may add the "lite" class before React hydrates.
+    <html lang="en-US" className={`${body.variable} ${heading.variable} antialiased`} suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col">
+        {/* Skip decorative photos and animation on Save-Data or 2G connections. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'var c=navigator.connection;if(c&&(c.saveData||/2g/.test(c.effectiveType)))document.documentElement.classList.add("lite")',
+          }}
+        />
         <a
           href="#main"
           className="sr-only z-50 rounded-full bg-ink px-5 py-3 font-semibold text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -45,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SiteHeader />
+        <Connectivity />
         <main id="main" className="flex-1">
           {children}
         </main>

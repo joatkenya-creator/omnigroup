@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero, Section } from "@/components/sections";
 import { pageMetadata } from "@/lib/seo";
@@ -44,8 +45,8 @@ export default function ApplyPage() {
               </p>
             </div>
             <p>
-              <Link href="/careers" className="text-link">
-                ← Back to current openings
+              <Link href="/careers" className="text-link inline-flex items-center gap-1.5">
+                <ArrowLeft className="size-4" aria-hidden="true" /> Back to current openings
               </Link>
             </p>
           </aside>

@@ -1,7 +1,7 @@
 /**
  * Company-wide facts. Values marked CONFIRM were taken from the previous
  * public website (reviewed 24 Oct 2026) and must be re-approved by
- * OmniGroup HR before launch — see docs/CONTENT-APPROVAL.md.
+ * OmniGroup HR before launch. See docs/CONTENT-APPROVAL.md.
  */
 export const site = {
   name: "OmniGroup HR",
@@ -37,7 +37,14 @@ export const site = {
   ],
 } as const;
 
-export type NavLink = { label: string; href: string; description?: string };
+/** "What happens next" on /contact, reused on every enquiry success panel. */
+export const enquirySteps = [
+  "We review your enquiry and match it to the right member of our team.",
+  "We contact you using your preferred method to understand your needs.",
+  "If we're a good fit, we'll recommend next steps.",
+];
+
+export type NavLink ={ label: string; href: string; description?: string };
 
 export const serviceNav: NavLink[] = [
   {

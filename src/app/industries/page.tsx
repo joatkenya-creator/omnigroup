@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Industry Expertise: Engineering, Oil & Gas, Infrastructure, Finance",
   description:
-    "Specialist recruitment for engineering, oil and gas, infrastructure, finance and HR roles — technical and professional talent for complex projects.",
+    "Specialist recruitment for engineering, oil and gas, infrastructure, finance and HR roles: technical and professional talent for complex projects.",
   path: "/industries",
 });
 

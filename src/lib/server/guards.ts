@@ -40,7 +40,7 @@ export function clientIp(request: Request) {
 /**
  * Verifies a Cloudflare Turnstile token. When no secret is configured the
  * check is skipped (local development); production must set
- * TURNSTILE_SECRET_KEY — see docs/DEPLOYMENT.md.
+ * TURNSTILE_SECRET_KEY. See docs/DEPLOYMENT.md.
  */
 export async function verifyTurnstile(token: string | null, ip: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY?.trim();

@@ -4,7 +4,7 @@ import type { FormKey } from "@/lib/forms/definitions";
  * Service catalogue. Scope is drawn from the previous public website
  * (home, Virtual Assistant Services, Our Services and About Us pages).
  * Process steps and FAQ answers describe a typical engagement and must be
- * confirmed by OmniGroup HR before launch — see docs/CONTENT-APPROVAL.md.
+ * confirmed by OmniGroup HR before launch. See docs/CONTENT-APPROVAL.md.
  */
 
 export type IconKey =
@@ -79,7 +79,7 @@ export const services: Record<ServiceSlug, Service> = {
     icon: "assistant",
     eyebrow: "Virtual Assistant Services",
     title: "Virtual assistant support that keeps your business running",
-    lead: "Skilled virtual assistants for executive support, day-to-day administration and the workflows that keep your operations on track — without the overhead of a full-time hire.",
+    lead: "Skilled virtual assistants for executive support, day-to-day administration and the workflows that keep your operations on track, without the overhead of a full-time hire.",
     summary:
       "Executive assistants and virtual specialists for scheduling, inbox and social media management, CRM and data, project coordination and customer service.",
     metaTitle: "Virtual Assistant Services for Businesses",
@@ -97,7 +97,7 @@ export const services: Record<ServiceSlug, Service> = {
       heading: "Reliable support, built around how you already work",
       paragraphs: [
         "As a business grows, the administrative load grows with it. Calendars fill up, inboxes back up, records drift out of date and leaders end up spending their best hours on tasks someone else could own.",
-        "OmniGroup HR provides virtual assistants who take on that work — from executive-level support to the daily administration and coordination that keeps projects moving. Support is shaped around your priorities and works inside the systems your team already uses.",
+        "OmniGroup HR provides virtual assistants who take on that work, from executive-level support to the daily administration and coordination that keeps projects moving. Support is shaped around your priorities and works inside the systems your team already uses.",
       ],
     },
     problems: {
@@ -167,7 +167,7 @@ export const services: Record<ServiceSlug, Service> = {
       items: [
         "Founders and executives who need dependable support across scheduling, correspondence and follow-up.",
         "Small and growing businesses with more administration than their current team can absorb.",
-        "Teams with recurring operational work — data entry, reporting, coordination — that keeps slipping.",
+        "Teams with recurring operational work (data entry, reporting, coordination) that keeps slipping.",
         "Organizations that need extra capacity for a project or busy period without a permanent hire.",
       ],
     },
@@ -206,7 +206,7 @@ export const services: Record<ServiceSlug, Service> = {
     faqs: [
       {
         q: "What tasks can a virtual assistant handle?",
-        a: "Our virtual assistants support executive support, calendar management, social media and inbox management, CRM and data management, operations and project coordination, and customer service. If your needs fall outside those areas, ask — we will tell you plainly whether we are the right fit.",
+        a: "Our virtual assistants support executive support, calendar management, social media and inbox management, CRM and data management, operations and project coordination, and customer service. If your needs fall outside those areas, ask. We will tell you plainly whether we are the right fit.",
       },
       {
         q: "How is a virtual assistant different from hiring an employee?",
@@ -243,7 +243,7 @@ export const services: Record<ServiceSlug, Service> = {
     icon: "hr",
     eyebrow: "HR Services",
     title: "HR support that strengthens your people and your operations",
-    lead: "Practical HR guidance — from policy development and compliance guidance to workforce alignment and organizational structure — so HR becomes a driver of growth, not just a support function.",
+    lead: "Practical HR guidance, from policy development and compliance guidance to workforce alignment and organizational structure, so HR becomes a driver of growth, not just a support function.",
     summary:
       "Policy development, compliance guidance, workforce alignment and organizational structure strategy from HR specialists and workforce strategists.",
     metaTitle: "HR Consulting & Support Services",
@@ -254,7 +254,7 @@ export const services: Record<ServiceSlug, Service> = {
     intro: {
       heading: "HR as a strategic contributor",
       paragraphs: [
-        "Many organizations treat HR as an administrative function — something that handles paperwork after decisions are made. We take a different view: well-designed HR keeps teams aligned, reduces friction and supports sustainable growth.",
+        "Many organizations treat HR as an administrative function: something that handles paperwork after decisions are made. We take a different view: well-designed HR keeps teams aligned, reduces friction and supports sustainable growth.",
         "OmniGroup HR's specialists, recruiters and workforce strategists combine modern methods with proven practices to help you build the policies, structure and culture your organization needs.",
       ],
     },
@@ -352,7 +352,7 @@ export const services: Record<ServiceSlug, Service> = {
       "Executive search, contract staffing, specialist technical recruitment and trades and skilled-labor staffing, including cross-border recruitment support.",
     metaTitle: "Staffing, Recruitment & Executive Search",
     metaDescription:
-      "Staffing and recruitment for engineering, oil and gas, infrastructure, finance and HR roles — plus executive search, contract staffing and skilled-trades staffing.",
+      "Staffing and recruitment for engineering, oil and gas, infrastructure, finance and HR roles, plus executive search, contract staffing and skilled-trades staffing.",
     schemaServiceType: "Staffing and recruitment",
     primaryCta: "Request talent",
     intro: {
@@ -638,7 +638,7 @@ export const services: Record<ServiceSlug, Service> = {
     form: {
       key: "business",
       heading: "Request a confidential conversation",
-      lead: "Share a brief summary — avoid names or sensitive details at this stage. We will contact you to discuss next steps.",
+      lead: "Share a brief summary, but avoid names or sensitive details at this stage. We will contact you to discuss next steps.",
       defaultService: "mediation",
     },
     related: ["hr-services", "leadership-development"],

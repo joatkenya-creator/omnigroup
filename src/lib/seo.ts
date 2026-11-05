@@ -9,7 +9,7 @@ const shareImage = {
   url: "/opengraph-image",
   width: 1200,
   height: 630,
-  alt: "OmniGroup HR — virtual assistant, HR and staffing services",
+  alt: "OmniGroup HR: virtual assistant, HR and staffing services",
 };
 
 /** Per-page metadata with canonical URL and matching Open Graph tags. */

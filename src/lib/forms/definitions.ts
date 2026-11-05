@@ -1,4 +1,5 @@
-import { GENERAL_APPLICATION, openings } from "@/content/careers";
+import { GENERAL_APPLICATION, applicationSteps, openings } from "@/content/careers";
+import { enquirySteps } from "@/content/site";
 
 /**
  * Single source of truth for every public form. The same definitions drive
@@ -36,7 +37,14 @@ export type FormDef = {
   destination: "leads" | "careers" | "newsletter";
   submitLabel: string;
   fields: FieldDef[];
-  success: { heading: string; body: string };
+  success: {
+    /** "Thanks, Jordan. Your {noun} has been sent." */
+    noun: string;
+    /** Replaces the generated heading (used where there is no name to greet). */
+    heading?: string;
+    steps?: string[];
+    next?: { label: string; href: string };
+  };
 };
 
 const name: FieldDef = { name: "name", label: "Full name", type: "text", required: true, autoComplete: "name", maxLength: 120, half: true };
@@ -78,10 +86,7 @@ export const forms: Record<FormKey, FormDef> = {
       },
       { name: "message", label: "How can we help?", type: "textarea", required: true, minLength: 10, maxLength: 3000, rows: 5, placeholder: "A short description of what you need" },
     ],
-    success: {
-      heading: "Thank you — your enquiry has been sent",
-      body: "A member of the OmniGroup HR team will review it and contact you using your preferred method.",
-    },
+    success: { noun: "enquiry", steps: enquirySteps, next: { label: "Explore our services", href: "/services" } },
   },
 
   va: {
@@ -120,8 +125,8 @@ export const forms: Record<FormKey, FormDef> = {
         placeholder: "If known",
         options: [
           { value: "under-10", label: "Under 10 hours a week" },
-          { value: "10-20", label: "10–20 hours a week" },
-          { value: "20-40", label: "20–40 hours a week" },
+          { value: "10-20", label: "10 to 20 hours a week" },
+          { value: "20-40", label: "20 to 40 hours a week" },
           { value: "full-time", label: "Full-time" },
           { value: "unsure", label: "Not sure yet" },
         ],
@@ -135,16 +140,13 @@ export const forms: Record<FormKey, FormDef> = {
         options: [
           { value: "asap", label: "As soon as possible" },
           { value: "1-month", label: "Within a month" },
-          { value: "1-3-months", label: "In 1–3 months" },
+          { value: "1-3-months", label: "In 1 to 3 months" },
           { value: "exploring", label: "Just exploring" },
         ],
       },
-      { name: "message", label: "Anything else we should know?", type: "textarea", maxLength: 3000, rows: 4, hint: "Optional — tools you use, time zone, tasks you'd like to hand off" },
+      { name: "message", label: "Anything else we should know?", type: "textarea", maxLength: 3000, rows: 4, hint: "Optional. Tools you use, time zone, tasks you'd like to hand off" },
     ],
-    success: {
-      heading: "Thank you — your VA enquiry has been sent",
-      body: "We'll review your requirements and contact you to arrange a consultation.",
-    },
+    success: { noun: "VA enquiry", steps: enquirySteps, next: { label: "Explore virtual assistant services", href: "/virtual-assistant-services" } },
   },
 
   staffing: {
@@ -201,18 +203,15 @@ export const forms: Record<FormKey, FormDef> = {
         required: true,
         placeholder: "Select a timeline",
         options: [
-          { value: "urgent", label: "Urgent — within 2 weeks" },
+          { value: "urgent", label: "Urgent (within 2 weeks)" },
           { value: "1-month", label: "Within a month" },
-          { value: "1-3-months", label: "In 1–3 months" },
+          { value: "1-3-months", label: "In 1 to 3 months" },
           { value: "planning", label: "Planning ahead" },
         ],
       },
-      { name: "message", label: "Hiring requirements", type: "textarea", maxLength: 3000, rows: 4, hint: "Optional — number of roles, key skills, certifications" },
+      { name: "message", label: "Hiring requirements", type: "textarea", maxLength: 3000, rows: 4, hint: "Optional. Number of roles, key skills, certifications" },
     ],
-    success: {
-      heading: "Thank you — your talent request has been sent",
-      body: "We'll review the role details and contact you to discuss requirements and next steps.",
-    },
+    success: { noun: "talent request", steps: enquirySteps, next: { label: "See the industries we recruit for", href: "/industries" } },
   },
 
   application: {
@@ -241,7 +240,7 @@ export const forms: Record<FormKey, FormDef> = {
         required: true,
         accept: [".pdf", ".doc", ".docx"],
         maxBytes: 5 * 1024 * 1024,
-        hint: "PDF, DOC or DOCX, up to 5 MB",
+        hint: "PDF or Word, up to 5 MB",
       },
       {
         name: "availability",
@@ -249,7 +248,7 @@ export const forms: Record<FormKey, FormDef> = {
         type: "textarea",
         maxLength: 1000,
         rows: 3,
-        hint: "Optional — suggest three dates and times over the next week for a 30-minute interview",
+        hint: "Optional. Suggest three dates and times over the next week for a 30-minute interview",
       },
       {
         name: "consent",
@@ -259,10 +258,7 @@ export const forms: Record<FormKey, FormDef> = {
         required: true,
       },
     ],
-    success: {
-      heading: "Thank you — your application has been received",
-      body: "Our recruitment team will review your details. If your experience matches a current opportunity, we'll contact you about next steps.",
-    },
+    success: { noun: "application", steps: applicationSteps.slice(1).map((s) => s.body), next: { label: "View openings", href: "/careers" } },
   },
 
   newsletter: {
@@ -275,7 +271,7 @@ export const forms: Record<FormKey, FormDef> = {
       { name: "email", label: "Email address", type: "email", required: true, autoComplete: "email", maxLength: 200 },
       { name: "consent", label: "Yes, send me the OmniGroup HR newsletter. I can unsubscribe at any time.", type: "checkbox", required: true },
     ],
-    success: { heading: "You're subscribed", body: "Thanks for signing up." },
+    success: { noun: "subscription", heading: "Thanks. You're subscribed." },
   },
 };
 

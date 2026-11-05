@@ -61,7 +61,7 @@ describe("handleSubmission", () => {
     const res = await handleSubmission(request({ name: "x" }), "va");
     expect(res.status).toBe(422);
     const body = await res.json();
-    expect(body.errors.email).toBe("Work email is required");
+    expect(body.errors.email).toBe("Enter a work email, for example name@company.com");
   });
 
   it("delivers through Resend with escaped HTML and reply-to set", async () => {
@@ -77,7 +77,7 @@ describe("handleSubmission", () => {
     const payload = JSON.parse(init.body);
     expect(payload.to).toEqual(["leads@example.com"]);
     expect(payload.reply_to).toBe("jordan@example.com");
-    expect(payload.subject).toBe("New virtual assistant enquiry: Acme & Co — Jordan <Lee>");
+    expect(payload.subject).toBe("New virtual assistant enquiry: Jordan <Lee>, Acme & Co");
     expect(payload.html).toContain("Jordan &lt;Lee&gt;");
     expect(payload.html).not.toContain("<Lee>");
     expect(payload.text).toContain("Executive support"); // option label, not raw value

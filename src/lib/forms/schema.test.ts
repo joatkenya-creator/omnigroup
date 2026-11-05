@@ -23,16 +23,16 @@ describe("validateValues", () => {
     const result = validateValues(forms.va, { email: "not-an-email", supportType: "made-up" });
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.errors.name).toBe("Full name is required");
-      expect(result.errors.email).toBe("Enter a valid email address");
-      expect(result.errors.supportType).toBe("Please choose an option from the list");
+      expect(result.errors.name).toBe("Enter your full name");
+      expect(result.errors.email).toBe("Enter a work email, for example name@company.com");
+      expect(result.errors.supportType).toBe("Choose an option from the list");
       expect(result.errors.workload).toBeUndefined(); // optional
     }
   });
 
   it("treats whitespace-only input as missing", () => {
     const result = validateValues(forms.business, { name: "   " });
-    expect(!result.ok && result.errors.name).toBe("Full name is required");
+    expect(!result.ok && result.errors.name).toBe("Enter your full name");
   });
 
   it("enforces minimum message length on business enquiries", () => {
@@ -49,12 +49,12 @@ describe("validateValues", () => {
 
   it("requires consent on applications", () => {
     const result = validateValues(forms.application, {});
-    expect(!result.ok && result.errors.consent).toBe("Please confirm to continue");
+    expect(!result.ok && result.errors.consent).toBe("Check this box to continue");
   });
 
   it("rejects malformed phone numbers", () => {
     const result = validateValues(forms.staffing, { phone: "call me maybe" });
-    expect(!result.ok && result.errors.phone).toBe("Enter a valid phone number");
+    expect(!result.ok && result.errors.phone).toMatch(/doesn't look like a phone number/);
   });
 });
 
@@ -66,7 +66,7 @@ describe("validateFile", () => {
   });
 
   it("requires a file", () => {
-    expect(validateFile(cvField, null)).toMatch(/required/);
+    expect(validateFile(cvField, null)).toMatch(/Choose a file to upload \(PDF or Word, up to 5 MB\)/);
   });
 
   it("rejects disallowed extensions", () => {
@@ -74,7 +74,7 @@ describe("validateFile", () => {
   });
 
   it("rejects oversized files", () => {
-    expect(validateFile(cvField, { name: "cv.pdf", size: 6 * 1024 * 1024 })).toMatch(/smaller than 5 MB/);
+    expect(validateFile(cvField, { name: "cv.pdf", size: 6 * 1024 * 1024 })).toMatch(/up to 5 MB/);
   });
 
   it("rejects a renamed file whose signature doesn't match", () => {

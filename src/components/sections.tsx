@@ -57,7 +57,7 @@ export function PageHero({
     <section className={`relative overflow-hidden border-b ${image ? "on-navy border-navy-line bg-navy text-on-navy" : "border-line bg-sand"}`}>
       {image ? (
         <>
-          <Image src={image.src} alt="" fill preload sizes="100vw" className={`object-cover ${image.position ?? "object-center"}`} />
+          <Image src={image.src} alt="" fill preload sizes="100vw" className={`hero-photo object-cover ${image.position ?? "object-center"}`} />
           {/* Solid enough that muted text stays above WCAG AA (4.5:1) even over white areas of the photo. */}
           <div aria-hidden="true" className="absolute inset-0 bg-navy/85" />
         </>
@@ -163,8 +163,7 @@ export function ProcessSteps({ steps }: { steps: Item[] }) {
             {String(i + 1).padStart(2, "0")}
           </span>
           <h3 className="mt-4 font-sans text-lg font-semibold tracking-normal">
-            <span className="sr-only">Step {i + 1}: </span>
-            {step.title}
+              {step.title}
           </h3>
           <p className="mt-2 leading-relaxed text-muted [.on-navy_&]:text-on-navy-muted">{step.body}</p>
         </li>
@@ -201,8 +200,9 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
+    // No bottom padding: the band always sits directly above the navy footer, whose top padding sets the gap.
     <section className="on-navy bg-navy text-on-navy">
-      <div className="container-page grid gap-8 py-16 md:grid-cols-[1.4fr_1fr] md:items-center md:py-20">
+      <div className="container-page grid gap-8 pt-16 md:grid-cols-[1.4fr_1fr] md:items-center md:pt-20">
         <div>
           <h2 className="text-3xl leading-tight md:text-[2.625rem]">{title}</h2>
           <p className="mt-4 max-w-xl text-lg text-on-navy-muted">{body}</p>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * OmniGroup HR design tokens — brand colours from the existing website:
+ * OmniGroup HR design tokens: brand colours from the existing website:
  * logo blue #23398E, header blue #314691, deep navy #22274F, light blue
  * #9BBDFF, on white. Components only reference the semantic names below.
  */
@@ -233,7 +233,40 @@
   }
 }
 
+@layer components {
+  /* Loading placeholder: a soft shimmer, static when reduced motion is on. */
+  .skeleton {
+    border-radius: 0.5rem;
+    background: linear-gradient(90deg, var(--color-sand) 25%, var(--color-sand-deep) 50%, var(--color-sand) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+/* Set by the inline script in layout.tsx on Save-Data or 2G connections. */
+.lite .hero-photo {
+  display: none;
+}
+.lite *,
+.lite *::before,
+.lite *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none !important;
+  }
   *,
   *::before,
   *::after {

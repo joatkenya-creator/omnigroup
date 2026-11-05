@@ -7,17 +7,22 @@ export type FormValues = Record<string, string>;
 const emailPattern = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const phonePattern = /^[+()\d\s.\-x]{7,40}$/i;
 
+const article = (word: string) => (/^[aeiou]/i.test(word) ? "an" : "a");
+
 function fieldSchema(field: FieldDef) {
-  const required = `${field.label} is required`;
+  const label = field.label.toLowerCase();
+  const emailHint = `Enter ${article(label)} ${label}, for example name@company.com`;
+  const required =
+    field.type === "email" ? emailHint : field.type === "textarea" ? "Add a short description of what you need" : `Enter your ${label}`;
 
   switch (field.type) {
     case "checkbox": {
-      const schema = z.literal("on", { error: "Please confirm to continue" });
+      const schema = z.literal("on", { error: "Check this box to continue" });
       return field.required ? schema : schema.optional();
     }
     case "select": {
       const values = field.options.map((o) => o.value) as [string, ...string[]];
-      const schema = z.enum(values, { error: (iss) => (iss.input === undefined ? required : "Please choose an option from the list") });
+      const schema = z.enum(values, { error: "Choose an option from the list" });
       return field.required ? schema : schema.optional();
     }
     case "file":
@@ -25,11 +30,12 @@ function fieldSchema(field: FieldDef) {
       return z.string().optional();
     default: {
       let schema = z.string({ error: required }).trim();
-      if (field.type === "email") schema = schema.regex(emailPattern, { error: "Enter a valid email address" });
-      if (field.type === "tel") schema = schema.regex(phonePattern, { error: "Enter a valid phone number" });
+      if (field.type === "email") schema = schema.regex(emailPattern, { error: emailHint });
+      if (field.type === "tel")
+        schema = schema.regex(phonePattern, { error: "This doesn't look like a phone number. Use digits, for example (757) 555-0123" });
       if (field.type === "textarea" && field.minLength)
-        schema = schema.min(field.minLength, { error: `Please add a little more detail (at least ${field.minLength} characters)` });
-      if (field.maxLength) schema = schema.max(field.maxLength, { error: `Please keep this under ${field.maxLength} characters` });
+        schema = schema.min(field.minLength, { error: `Add a little more detail (at least ${field.minLength} characters)` });
+      if (field.maxLength) schema = schema.max(field.maxLength, { error: `Shorten this to ${field.maxLength} characters or fewer` });
       return field.required ? schema : schema.optional();
     }
   }
@@ -77,10 +83,12 @@ export function validateFile(
   file: { name: string; size: number } | null | undefined,
   head?: Uint8Array,
 ): string | null {
-  if (!file || file.size === 0) return field.required ? `${field.label} is required` : null;
+  const limits = field.hint ?? field.accept.join(", ");
+  if (!file || file.size === 0) return field.required ? `Choose a file to upload (${limits})` : null;
   const ext = extensionOf(file.name);
-  if (!field.accept.includes(ext)) return `Please upload a ${field.accept.map((a) => a.slice(1).toUpperCase()).join(", ")} file`;
-  if (file.size > field.maxBytes) return `Files must be smaller than ${Math.round(field.maxBytes / 1024 / 1024)} MB`;
-  if (head && !(signatures[ext] ?? []).every((b, i) => head[i] === b)) return "This file doesn't appear to be a valid document";
+  if (!field.accept.includes(ext)) return `This file type can't be used. Upload a ${field.accept.map((a) => a.slice(1).toUpperCase()).join(", ")} file`;
+  if (file.size > field.maxBytes)
+    return `This file is ${(file.size / 1024 / 1024).toFixed(1)} MB. Upload a file up to ${Math.round(field.maxBytes / 1024 / 1024)} MB, or save a smaller copy first`;
+  if (head && !(signatures[ext] ?? []).every((b, i) => head[i] === b)) return "This file doesn't look like a valid document. Save it again and upload the new copy";
   return null;
 }

@@ -20,7 +20,7 @@ export default function ServicesPage() {
         image={{ src: "/images/services/hero-typing-laptop.webp" }}
         eyebrow="Our services"
         title="Talent and support solutions for a growing workforce"
-        lead="Recruitment, staffing, virtual support and workforce development for U.S. businesses — from executive and skilled-trades hiring to HR strategy and workplace mediation."
+        lead="Recruitment, staffing, virtual support and workforce development for U.S. businesses, from executive and skilled-trades hiring to HR strategy and workplace mediation."
       />
       <Section>
         <ul className="grid gap-6">

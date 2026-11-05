@@ -39,8 +39,8 @@ export function leadSubject(lead: Lead) {
   const v = lead.values;
   const who =
     lead.form.key === "application"
-      ? `${v.position} — ${v.firstName} ${v.lastName}`
-      : [v.company, v.name].filter(Boolean).join(" — ");
+      ? `${v.firstName} ${v.lastName} (${v.position})`
+      : [v.name, v.company].filter(Boolean).join(", ");
   return `New ${lead.form.label.toLowerCase()}: ${who}`.replace(/[\r\n]+/g, " ").slice(0, 200);
 }
 

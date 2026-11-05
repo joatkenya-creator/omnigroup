@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Openings } from "@/components/careers/Openings";
 import { PageHero, Section, SectionHeading } from "@/components/sections";
-import { openings } from "@/content/careers";
+import { EmptyState } from "@/components/states";
+import { GENERAL_APPLICATION, applicationSteps, openings } from "@/content/careers";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -10,12 +12,6 @@ export const metadata = pageMetadata({
     "Explore careers with OmniGroup HR, see current job openings and submit an application online.",
   path: "/careers",
 });
-
-const steps = [
-  { title: "Apply online", body: "Choose a position, upload your resume and suggest times for a short interview." },
-  { title: "Review", body: "Our recruitment team reviews your experience against current opportunities." },
-  { title: "Conversation", body: "If there's a potential match, we'll contact you to arrange an interview." },
-];
 
 export default function CareersPage() {
   return (
@@ -38,57 +34,31 @@ export default function CareersPage() {
       </PageHero>
 
       <Section id="openings" labelledBy="openings-heading">
-        <SectionHeading
-          id="openings-heading"
-          eyebrow="Current openings"
-          title={openings.length > 0 ? "Open positions" : "No open positions right now"}
-          lead={
-            openings.length > 0
-              ? "All positions are based in the United States."
-              : "We don't have any open positions at the moment, but you're welcome to send a general application."
-          }
-        />
-        {openings.length > 0 && (
-          <ul className="mt-10 grid gap-5 md:grid-cols-2">
-            {openings.map((job) => (
-              <li key={job.id} className="card flex flex-col p-7">
-                <h3 className="text-2xl">{job.title}</h3>
-                <p className="mt-1 flex items-center gap-1.5 text-sm text-muted">
-                  <MapPin className="size-4" aria-hidden="true" /> {job.location}
-                </p>
-                <p className="mt-4 text-ink-soft">{job.summary}</p>
-                <ul className="mt-4 flex-1 space-y-1.5 text-sm text-ink-soft">
-                  {job.responsibilities.map((r) => (
-                    <li key={r} className="flex gap-2">
-                      <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/careers/apply?position=${encodeURIComponent(job.title)}`}
-                  className="btn btn-secondary mt-6 self-start"
-                  aria-label={`Apply for ${job.title}`}
-                >
-                  Apply for this role
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {openings.length > 0 ? (
+          <>
+            <SectionHeading
+              id="openings-heading"
+              eyebrow="Current openings"
+              title="Open positions"
+              lead="All positions are based in the United States."
+            />
+            <Openings openings={openings} />
+          </>
+        ) : (
+          <EmptyState
+            id="openings-heading"
+            eyebrow="Current openings"
+            title="No open positions right now"
+            body="We post roles as clients bring them to us, so openings change often."
+            action={{ label: "Send a general application", href: `/careers/apply?position=${encodeURIComponent(GENERAL_APPLICATION)}` }}
+          />
         )}
-        <p className="mt-10 text-ink-soft">
-          Don&apos;t see the right role?{" "}
-          <Link href="/careers/apply?position=General%20application" className="text-link">
-            Send a general application
-          </Link>
-          .
-        </p>
       </Section>
 
       <Section tone="sand" labelledBy="process-heading">
         <SectionHeading id="process-heading" eyebrow="What to expect" title="How applications work" />
         <ol className="mt-10 grid gap-5 md:grid-cols-3">
-          {steps.map((s, i) => (
+          {applicationSteps.map((s, i) => (
             <li key={s.title} className="card p-7">
               <span className="font-display text-3xl text-accent" aria-hidden="true">
                 {i + 1}

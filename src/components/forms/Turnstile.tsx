@@ -34,8 +34,9 @@ function loadScript() {
 
 /**
  * Cloudflare Turnstile widget. Renders inside the form, which gives the form
- * a hidden `cf-turnstile-response` input. Changing `resetKey` issues a fresh
- * token after a submission attempt. Renders nothing when no site key is set.
+ * a hidden `cf-turnstile-response` input. Changing `resetKey` re-renders the
+ * widget for a fresh token after a submission attempt, and retries loading if
+ * the script failed (for example while offline). Renders nothing when no site key is set.
  */
 export function Turnstile({ resetKey, theme = "light" }: { resetKey: number; theme?: "light" | "dark" }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,11 +56,7 @@ export function Turnstile({ resetKey, theme = "light" }: { resetKey: number; the
       if (widgetId.current) window.turnstile?.remove(widgetId.current);
       widgetId.current = null;
     };
-  }, [theme]);
-
-  useEffect(() => {
-    if (resetKey > 0 && widgetId.current) window.turnstile?.reset(widgetId.current);
-  }, [resetKey]);
+  }, [theme, resetKey]);
 
   if (!siteKey) return null;
   return <div ref={ref} className="min-h-[65px]" />;

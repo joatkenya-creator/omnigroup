@@ -42,7 +42,7 @@ const approach = [
   },
   {
     title: "Seamless hiring",
-    body: "Attention to compliance, cultural alignment and smooth onboarding — not just getting a candidate through the door.",
+    body: "Attention to compliance, cultural alignment and smooth onboarding, not just getting a candidate through the door.",
   },
 ];
 
@@ -152,7 +152,7 @@ export default function AboutPage() {
             Structured, reliable workforce solutions that help organizations operate with confidence.
           </h2>
           <p className="mt-5 text-lg text-ink-soft">
-            We bring precision, professionalism and strong systems to every engagement — particularly in complex industries where
+            We bring precision, professionalism and strong systems to every engagement, particularly in complex industries where
             the right people make the difference.
           </p>
         </div>

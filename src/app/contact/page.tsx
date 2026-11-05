@@ -3,7 +3,7 @@ import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero, Section } from "@/components/sections";
-import { site } from "@/content/site";
+import { enquirySteps, site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -17,12 +17,6 @@ const routes = [
   { label: "Virtual assistant support", body: "Dedicated VA enquiry form", href: "/virtual-assistant-services#enquire", icon: "assistant" as const },
   { label: "Hiring or staffing", body: "Request talent for a role", href: "/staffing-recruitment#enquire", icon: "recruitment" as const },
   { label: "Looking for a job", body: "View openings and apply", href: "/careers", icon: "people" as const },
-];
-
-const nextSteps = [
-  "We review your enquiry and match it to the right member of our team.",
-  "We contact you using your preferred method to understand your needs.",
-  "If we're a good fit, we'll recommend next steps.",
 ];
 
 export default function ContactPage() {
@@ -88,7 +82,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.08em] text-muted">What happens next</h3>
               <ol className="mt-4 space-y-3">
-                {nextSteps.map((s, i) => (
+                {enquirySteps.map((s, i) => (
                   <li key={s} className="flex gap-3 text-ink-soft">
                     <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent-tint text-sm font-semibold text-accent">
                       {i + 1}

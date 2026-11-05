@@ -28,7 +28,7 @@ export function SiteFooter() {
   const { contact } = site;
   return (
     <footer className="on-navy bg-navy text-on-navy">
-      <div className="container-page py-16 md:py-20">
+      <div className="container-page pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-10 md:pt-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="max-w-sm">
             <Brand tone="light" />
@@ -82,16 +82,16 @@ export function SiteFooter() {
         </div>
 
         {newsletterEnabled && (
-          <div className="mt-14 grid gap-6 rounded-[var(--radius-card)] border border-navy-line bg-navy-raised p-6 md:grid-cols-[1fr_1.4fr] md:p-8">
+          <div className="mt-10 grid gap-6 rounded-[var(--radius-card)] border border-navy-line bg-navy-raised p-6 md:grid-cols-[1fr_1.4fr] md:p-8">
             <div>
               <h2 className="text-2xl">Stay up to date</h2>
-              <p className="mt-2 text-on-navy-muted">Occasional updates from OmniGroup HR. No spam — unsubscribe any time.</p>
+              <p className="mt-2 text-on-navy-muted">Occasional updates from OmniGroup HR. No spam. Unsubscribe any time.</p>
             </div>
             <LazyLeadForm formKey="newsletter" variant="compact" />
           </div>
         )}
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-navy-line pt-8 text-sm text-on-navy-muted md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-navy-line pt-6 text-sm text-on-navy-muted md:flex-row md:items-center md:justify-between">
           <p>
             © {process.env.NEXT_PUBLIC_BUILD_YEAR} {site.name}. {site.parentStatement}.
           </p>

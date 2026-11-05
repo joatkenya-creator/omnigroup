@@ -33,7 +33,7 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="on-navy relative overflow-hidden border-b border-navy-line bg-navy text-on-navy">
-        <Image src="/images/home/virtual-meeting.webp" alt="" fill preload sizes="100vw" className="object-cover object-center" />
+        <Image src="/images/home/virtual-meeting.webp" alt="" fill preload sizes="100vw" className="hero-photo object-cover object-center" />
         {/* Solid enough that muted text stays above WCAG AA (4.5:1) even over white areas of the photo. */}
         <div aria-hidden="true" className="absolute inset-0 bg-navy/85" />
         <div className="container-page relative grid gap-12 py-14 md:py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-24">
@@ -84,7 +84,7 @@ export default function HomePage() {
               <li className="mt-1 border-t border-line">
                 <Link href="/careers" className="group flex items-center gap-4 rounded-xl px-4 py-3.5 transition-colors hover:bg-sand">
                   <span className="flex-1 text-ink-soft">
-                    I&apos;m a job seeker <span className="text-muted">— see openings</span>
+                    I&apos;m a job seeker<span className="text-muted">: see openings</span>
                   </span>
                   <ArrowUpRight className="size-4 text-muted group-hover:text-accent" aria-hidden="true" />
                 </Link>
@@ -94,7 +94,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Facts strip — verifiable statements only */}
+      {/* Facts strip: verifiable statements only */}
       <section aria-label="About OmniGroup HR" className="border-b border-line bg-paper">
         <ul className="container-page grid gap-6 py-8 text-ink-soft sm:grid-cols-3">
           {[
@@ -281,7 +281,7 @@ export default function HomePage() {
             <p className="eyebrow">For employers</p>
             <h3 className="mt-3 text-3xl">Find talent or support</h3>
             <p className="mt-3 flex-1 text-lg text-muted">
-              Tell us what your organization needs — a virtual assistant, a specialist hire or HR guidance — and we&apos;ll arrange a
+              Tell us what your organization needs, whether that&apos;s a virtual assistant, a specialist hire or HR guidance, and we&apos;ll arrange a
               conversation.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -330,7 +330,7 @@ export default function HomePage() {
 
       <CtaBand
         title="Ready to talk about your needs?"
-        body="Tell us what you're working on and we'll recommend the right support — whether that's a virtual assistant, a new hire or HR guidance."
+        body="Tell us what you're working on and we'll recommend the right support, whether that's a virtual assistant, a new hire or HR guidance."
         primary={{ label: "Request a consultation", href: "/contact" }}
         secondary={{ label: "Explore VA services", href: "/virtual-assistant-services" }}
       />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, CircleAlert } from "lucide-react";
 import type { FieldDef } from "@/lib/forms/definitions";
 
 const control =
@@ -54,7 +54,8 @@ export function Field({
         </p>
       )}
       {error && (
-        <p id={errorId} className={`mt-1.5 text-sm font-medium ${dark ? "text-[#fda29b]" : "text-danger"}`}>
+        <p id={errorId} className={`mt-1.5 flex gap-1.5 text-sm font-medium ${dark ? "text-[#fda29b]" : "text-danger"}`}>
+          <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           {error}
         </p>
       )}
